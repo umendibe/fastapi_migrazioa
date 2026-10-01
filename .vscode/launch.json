@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "FastAPI: uv run dev",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "uv run fastapi dev main.py",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "FastAPI: Debug breakpoints",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "fastapi",
+            "args": ["dev", "main.py"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
