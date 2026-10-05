@@ -72,7 +72,7 @@ def put_pelikula(id: int, parametro: pelikulak_model.Pelikulak):
     
     
 @pelikulak_router.patch("/patch/{id}")
-def patch_pelikula(id, parametro: pelikulak_model.PelikulakPatch):
+def patch_pelikula(id: int, parametro: pelikulak_model.PelikulakPatch):
     pelikula_aurkitua = None
     for p in pelikulak_db:
         if p["id"] == id:
@@ -87,3 +87,11 @@ def patch_pelikula(id, parametro: pelikulak_model.PelikulakPatch):
     pelikula_aurkitua.update(update_data)
     
     return pelikula_aurkitua
+
+@pelikulak_router.delete("/delete/{id}")
+def delete_pelikula(id: int):
+    for pelikula in pelikulak_db:
+        if pelikula["id"] == id:
+            pelikulak_db.remove(pelikula)
+            return pelikula
+    raise HTTPException(status_code=404, detail="Ez da aurkitu pelikula")
